@@ -88,3 +88,7 @@ app.layout = html.Div([
 # Lambda handler para entornos serverless en Vercel
 def lambda_handler(event, context):
     return server
+
+# Ejecutar localmente si se usa fuera de un entorno serverless
+if __name__ == '__main__':
+    app.run_server(debug=True)
