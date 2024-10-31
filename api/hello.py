@@ -10,13 +10,13 @@ server = Flask(__name__)
 app = dash.Dash(__name__, server=server)
 
 # Definir radios de la Tierra y órbitas
-r_tierra = 5000          # Radio de la Tierra en km
-r_orbita_baja = 7000     # Radio de la órbita baja en km
-r_orbita_alta = 12000    # Radio de la órbita alta en km
+r_tierra = 5000  # Radio de la Tierra en km
+r_orbita_baja = 7000  # Radio de la órbita baja en km
+r_orbita_alta = 12000  # Radio de la órbita alta en km
 
 # Crear la figura base
 fig = go.Figure()
-theta = np.linspace(0, 2 * np.pi, 100)  # Ángulo para dibujar el círculo
+theta = np.linspace(0, 2 * np.pi, 100)
 
 # Tierra (círculo azul)
 x_tierra = r_tierra * np.cos(theta)
@@ -85,6 +85,6 @@ app.layout = html.Div([
     html.P("Este gráfico animado muestra cómo un satélite se desplaza de una órbita baja (700 km) a una órbita alta (1400 km) sobre la superficie de la Tierra, representada como un círculo central. Las órbitas están marcadas en verde y rojo, respectivamente, y el satélite, ilustrado como un punto naranja, cambia gradualmente de altura.")
 ])
 
-# Ejecutar la aplicación solo en desarrollo local
-if __name__ == '__main__':
-    app.run_server(debug=True)
+# Lambda handler para entornos serverless en Vercel
+def lambda_handler(event, context):
+    return server
