@@ -1,9 +1,15 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/hello.py", "use": "@vercel/python", "config": { "maxLambdaSize": "15mb" } }
+    {
+      "src": "api/hello.py",
+      "use": "@vercel/python"
+    }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "api/hello.py" }
+    {
+      "src": "/(.*)",
+      "dest": "api/hello.py"
+    }
   ]
 }
