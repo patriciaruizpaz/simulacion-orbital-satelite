@@ -3,9 +3,11 @@ import dash
 from dash import dcc, html
 import plotly.graph_objects as go
 import numpy as np
+from flask import Flask
 
-# Inicializar la aplicación Dash
-app = dash.Dash(__name__)
+# Inicializar el servidor de Flask
+server = Flask(__name__)
+app = dash.Dash(__name__, server=server)
 
 # Definir radios de la Tierra y órbitas
 r_tierra = 5000          # Radio de la Tierra en km
@@ -83,6 +85,6 @@ app.layout = html.Div([
     html.P("Este gráfico animado muestra cómo un satélite se desplaza de una órbita baja (700 km) a una órbita alta (1400 km) sobre la superficie de la Tierra, representada como un círculo central. Las órbitas están marcadas en verde y rojo, respectivamente, y el satélite, ilustrado como un punto naranja, cambia gradualmente de altura.")
 ])
 
-# Ejecutar la aplicación
+# Ejecutar la aplicación solo en desarrollo local
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', port=int(os.environ.get('PORT', 8050)))
+    app.run_server(debug=True)
